@@ -132,9 +132,9 @@ Die Daten liegen in zwei Ebenen vor:
 
 Für den Override erwartet der Lader Waffen und Rüstungen unter den Schlüsseln
 `waffen` und `ruestungen`, Beute und Verbrauchsgüter unter `items` sowie die
-Domänenkarten als reine Liste. Als Alternative zu `domaenen.json` liest er
-`faehigkeiten.json`. Weitere Dateien im Datenordner (etwa `gegner.json`,
-`schauplaetze.json` oder `regelwerk.md`) wertet dieses Plugin nicht aus.
+Domänenkarten als reine Liste. Weitere Dateien im Datenordner (etwa
+`gegner.json`, `schauplaetze.json` oder `regelwerk.md`) wertet dieses Plugin
+nicht aus.
 
 ## Frontmatter-Schema
 

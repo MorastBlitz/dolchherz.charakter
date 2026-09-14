@@ -1512,7 +1512,7 @@
   {
     "domaene": "LEBEN",
     "domaene_full": "LEBEN-DOMÄNE",
-    "name": "HEILENE HÄNDE",
+    "name": "HEILENDE HÄNDE",
     "typ": "Zauber",
     "stufe": 2,
     "rueckrufkosten": 1,
@@ -1602,7 +1602,7 @@
   {
     "domaene": "LEBEN",
     "domaene_full": "LEBEN-DOMÄNE",
-    "name": "HEILEDER SCHLAG",
+    "name": "HEILENDER SCHLAG",
     "typ": "Zauber",
     "stufe": 7,
     "rueckrufkosten": 1,

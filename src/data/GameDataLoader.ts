@@ -103,11 +103,7 @@ export class GameDataLoader {
       return null;
     }
 
-    // `faehigkeiten.json` ist eine inhaltsgleiche Alternative zu `domaenen.json`.
-    const domaenen =
-      (await read<unknown[]>(FILE_NAMES.domaenen)) ??
-      (await read<unknown[]>('faehigkeiten.json')) ??
-      [];
+    const domaenen = (await read<unknown[]>(FILE_NAMES.domaenen)) ?? [];
 
     return {
       klassen: klassen as GameData["klassen"],
