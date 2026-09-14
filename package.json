@@ -1,0 +1,29 @@
+{
+  "name": "dolchherz.charakter",
+  "version": "0.1.0",
+  "description": "Interaktiver Daggerheart/Dolchherz-Charakterbogen fuer Obsidian",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "deploy": "node scripts/deploy.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "sync-data": "node scripts/sync-data.mjs"
+  },
+  "keywords": [
+    "obsidian",
+    "daggerheart",
+    "dolchherz",
+    "character-sheet"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "esbuild": "^0.20.2",
+    "obsidian": "latest",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}

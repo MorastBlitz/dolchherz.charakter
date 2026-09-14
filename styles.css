@@ -1,0 +1,568 @@
+/* Dolchherz Charakterbogen
+ * Layout angelehnt an die Charakterboegen aus dem Regelwerk.
+ * Farben und Radien stammen aus den Obsidian-Theme-Variablen, damit sich der
+ * Bogen in helle und dunkle Themes einfuegt.
+ */
+
+.dh-sheet {
+  --dh-border: var(--background-modifier-border);
+  --dh-surface: var(--background-secondary);
+  --dh-surface-alt: var(--background-primary-alt, var(--background-primary));
+  --dh-accent: var(--interactive-accent);
+  --dh-danger: var(--text-error, #c0392b);
+  --dh-muted: var(--text-muted);
+  --dh-radius: var(--radius-m, 8px);
+
+  border: 1px solid var(--dh-border);
+  border-radius: var(--dh-radius);
+  padding: 14px;
+  font-size: var(--font-ui-small);
+  color: var(--text-normal);
+  background: var(--dh-surface-alt);
+}
+
+.dh-sheet--error {
+  color: var(--dh-danger);
+}
+
+.dh-sheet--empty {
+  text-align: center;
+}
+
+/* Kopfbereich ------------------------------------------------------------ */
+
+.dh-sheet__header {
+  border-bottom: 1px solid var(--dh-border);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.dh-sheet__title {
+  margin: 0 0 8px;
+  font-size: var(--font-ui-large);
+  font-weight: 600;
+}
+
+/* Portrait --------------------------------------------------------------- */
+
+.dh-portrait {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.dh-portrait__image {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: var(--dh-radius);
+  border: 1px solid var(--dh-border);
+  background: var(--dh-surface);
+}
+
+.dh-portrait__image.is-clickable {
+  cursor: pointer;
+}
+
+.dh-portrait__image.is-clickable:hover {
+  border-color: var(--dh-accent);
+}
+
+.dh-portrait__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  border: 1px dashed var(--dh-border);
+  border-radius: var(--dh-radius);
+  color: var(--dh-muted);
+  font-size: var(--font-ui-smaller);
+  text-align: center;
+}
+
+.dh-portrait__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+/* Bild-Grossansicht ------------------------------------------------------ */
+
+.dh-image-modal__image {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  margin: 0 auto;
+}
+
+.dh-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 8px;
+}
+
+.dh-grid--attributes {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.dh-grid--tracks {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.dh-grid--weapons {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.dh-grid--gold,
+.dh-grid--zustaende,
+.dh-grid--fortschritt {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.dh-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.dh-field__label {
+  color: var(--dh-muted);
+  font-size: var(--font-ui-smaller);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dh-field__hint {
+  color: var(--dh-muted);
+  font-size: var(--font-ui-smaller);
+  line-height: 1.35;
+}
+
+.dh-field__roll {
+  font-weight: 600;
+  font-size: var(--font-ui-smaller);
+}
+
+.dh-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.dh-inline--wrap {
+  flex-wrap: wrap;
+}
+
+/* Kennzahlen ------------------------------------------------------------- */
+
+.dh-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dh-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 62px;
+  padding: 4px 8px;
+  border: 1px solid var(--dh-border);
+  border-radius: var(--dh-radius);
+  background: var(--dh-surface);
+}
+
+.dh-badge__label {
+  color: var(--dh-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.dh-badge__value {
+  font-weight: 600;
+  font-size: var(--font-ui-medium);
+}
+
+/* Sektionen -------------------------------------------------------------- */
+
+.dh-section {
+  border: 1px solid var(--dh-border);
+  border-radius: var(--dh-radius);
+  padding: 10px;
+  margin-bottom: 12px;
+  background: var(--dh-surface-alt);
+}
+
+.dh-section--actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dh-button--danger {
+  color: var(--dh-danger);
+  border-color: var(--dh-danger);
+}
+
+.dh-section__title {
+  font-weight: 600;
+  font-size: var(--font-ui-medium);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--dh-border);
+}
+
+.dh-section__subtitle {
+  font-weight: 600;
+  margin: 8px 0 4px;
+}
+
+/* Ressourcenfelder ------------------------------------------------------- */
+
+.dh-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.dh-slot {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--dh-border);
+  border-radius: 3px;
+  background: var(--dh-surface);
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.dh-slot:hover {
+  border-color: var(--dh-accent);
+}
+
+.dh-slot.is-marked {
+  background: var(--dh-accent);
+  border-color: var(--dh-accent);
+}
+
+.dh-slots--numbered .dh-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: var(--font-ui-smaller);
+  color: var(--dh-muted);
+}
+
+.dh-slots--numbered .dh-slot.is-marked {
+  color: var(--text-on-accent, #fff);
+}
+
+.dh-track-side {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.dh-warning {
+  color: var(--dh-danger);
+  font-size: var(--font-ui-smaller);
+  font-weight: 600;
+}
+
+/* Eingaben --------------------------------------------------------------- */
+
+.dh-input,
+.dh-select {
+  width: 100%;
+  min-width: 0;
+}
+
+.dh-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dh-stepper__btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  line-height: 1;
+}
+
+.dh-stepper__value {
+  min-width: 1.5em;
+  text-align: center;
+  font-weight: 600;
+}
+
+.dh-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: var(--font-ui-smaller);
+}
+
+.dh-roll-button {
+  cursor: pointer;
+}
+
+/* Schadensrechner -------------------------------------------------------- */
+
+.dh-damage {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid var(--dh-border);
+  border-radius: var(--dh-radius);
+  padding: 8px;
+  background: var(--dh-surface);
+}
+
+.dh-damage__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dh-damage__input {
+  width: 90px;
+}
+
+.dh-damage__preview {
+  font-weight: 600;
+}
+
+.dh-damage__actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Faehigkeiten und Kartentexte ------------------------------------------ */
+
+.dh-collapsible {
+  border: 1px solid var(--dh-border);
+  border-radius: var(--dh-radius);
+  margin-bottom: 6px;
+  background: var(--dh-surface);
+}
+
+.dh-collapsible__summary {
+  cursor: pointer;
+  padding: 6px 8px;
+  font-weight: 600;
+}
+
+.dh-collapsible__body {
+  padding: 0 8px 8px;
+}
+
+.dh-ability {
+  margin-bottom: 8px;
+}
+
+.dh-ability__name {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.dh-rich {
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+.dh-rich-list {
+  margin: 0 0 6px;
+  padding-left: 18px;
+}
+
+/* Listen ----------------------------------------------------------------- */
+
+.dh-card-list {
+  margin-top: 8px;
+}
+
+.dh-card {
+  border: 1px solid var(--dh-border);
+  border-radius: var(--dh-radius);
+  padding: 8px;
+  margin-bottom: 8px;
+  background: var(--dh-surface);
+}
+
+.dh-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.dh-card__name {
+  font-weight: 600;
+}
+
+.dh-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--dh-border);
+}
+
+.dh-item__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.dh-item__name {
+  min-width: 0;
+}
+
+.dh-fortschritte {
+  margin: 4px 0 8px;
+  padding-left: 18px;
+  line-height: 1.4;
+}
+
+/* Wuerfe ----------------------------------------------------------------- */
+
+.dh-dice__log {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.dh-roll {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 8px;
+  border: 1px solid var(--dh-border);
+  border-radius: var(--dh-radius);
+  padding: 6px 8px;
+  background: var(--dh-surface);
+}
+
+.dh-roll.is-crit {
+  border-color: var(--dh-accent);
+  box-shadow: 0 0 0 1px var(--dh-accent) inset;
+}
+
+.dh-roll__label {
+  font-weight: 600;
+}
+
+.dh-roll__total {
+  font-weight: 700;
+  font-size: var(--font-ui-medium);
+  text-align: right;
+}
+
+.dh-roll__detail {
+  grid-column: 1 / -1;
+  color: var(--dh-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.dh-roll__outcome {
+  grid-column: 1 / -1;
+  font-size: var(--font-ui-smaller);
+  font-weight: 600;
+}
+
+.dh-roll__outcome--hope {
+  color: var(--color-green, #2e7d32);
+}
+
+.dh-roll__outcome--fear {
+  color: var(--dh-danger);
+}
+
+.dh-roll__outcome--crit {
+  color: var(--dh-accent);
+}
+
+/* Uebersicht ------------------------------------------------------------- */
+
+.dh-overview__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dh-overview__table th,
+.dh-overview__table td {
+  border-bottom: 1px solid var(--dh-border);
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.dh-overview__table th {
+  color: var(--dh-muted);
+  font-size: var(--font-ui-smaller);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Druck und schmale Ansichten ------------------------------------------- */
+
+@media (max-width: 600px) {
+  .dh-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-track-side {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .dh-sheet {
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  .dh-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .dh-roll-button,
+  .dh-button,
+  .dh-damage__actions {
+    display: none;
+  }
+}
+
+/* Uebersichtsansicht (Ribbon) -------------------------------------------- */
+
+.dh-hub {
+  padding: 4px;
+}
+
+.dh-hub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dh-hub__list {
+  margin-top: 4px;
+}

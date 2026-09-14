@@ -1,0 +1,9 @@
+{
+  "id": "dolchherz.charakter",
+  "name": "dolchherz.charakter",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.0",
+  "description": "Interaktiver Dolchherz-/Daggerheart-Charakterbogen als Code-Block, mit Würfelroller, Stufenaufstieg, Inventar, Multi-Charakter-Verwaltung und Übersicht über das Ribbon.",
+  "author": "MorastBlitz",
+  "isDesktopOnly": false
+}
