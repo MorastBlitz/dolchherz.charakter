@@ -519,6 +519,18 @@
   letter-spacing: 0.04em;
 }
 
+/* Der Name wird in der Ansicht selbst geoeffnet, daher auch ohne
+   Markdown-Kontext wie ein interner Link dargestellt. */
+.dh-overview__link {
+  color: var(--link-color);
+  cursor: pointer;
+  text-decoration-line: var(--link-decoration, underline);
+}
+
+.dh-overview__link:hover {
+  color: var(--link-color-hover);
+}
+
 /* Druck und schmale Ansichten ------------------------------------------- */
 
 @media (max-width: 600px) {

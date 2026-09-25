@@ -1,7 +1,7 @@
 /**
  * Uebersicht aller Charaktere im Vault.
  */
-import { App, MarkdownRenderChild, TFile } from "obsidian";
+import { App, Keymap, MarkdownRenderChild, TFile } from "obsidian";
 
 import { getRang } from "../logic/derived";
 import { CHARACTER_FRONTMATTER_KEY, CHARACTER_TYPE } from "../model/character";
@@ -36,6 +36,20 @@ export function collectCharacters(app: App): OverviewEntry[] {
   return entries.sort((a, b) => a.name.localeCompare(b.name, "de"));
 }
 
+/**
+ * Oeffnet die Notiz eines Charakters.
+ *
+ * Der Klick wird selbst behandelt: Obsidian verarbeitet interne Links nur
+ * innerhalb von Markdown-Ansichten. In dieser eigenen Ansicht wuerde ein
+ * `internal-link` mit `data-href` nur als normale Navigation ins Leere laufen.
+ * Da die Notiz bereits bekannt ist, entfaellt jede Pfadaufloesung.
+ */
+function openCharacter(app: App, file: TFile, event: MouseEvent): void {
+  if (event.button !== 0 && event.button !== 1) return;
+  event.preventDefault();
+  void app.workspace.getLeaf(Keymap.isModEvent(event)).openFile(file);
+}
+
 export function renderOverview(app: App, host: HTMLElement): void {
   host.empty();
   const container = host.createDiv({ cls: "dh-overview" });
@@ -60,11 +74,16 @@ export function renderOverview(app: App, host: HTMLElement): void {
     const row = body.createEl("tr");
     const nameCell = row.createEl("td");
     const link = nameCell.createEl("a", {
-      cls: "internal-link",
+      cls: "dh-overview__link",
       text: entry.name,
+      href: entry.file.path,
     });
-    link.setAttr("data-href", entry.file.path);
-    link.setAttr("href", entry.file.path);
+    link.addEventListener("click", (event) =>
+      openCharacter(app, entry.file, event),
+    );
+    link.addEventListener("auxclick", (event) =>
+      openCharacter(app, entry.file, event),
+    );
 
     row.createEl("td", { text: entry.klasse });
     row.createEl("td", { text: entry.subklasse });
